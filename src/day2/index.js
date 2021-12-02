@@ -1,11 +1,6 @@
-const fs = require('fs');
+import { readByLines, sumNumbers } from '../utils.js';
 
-const sumNumbers = (a, b) => a + b;
-
-let commandList = fs
-  .readFileSync(__dirname + '/input', 'utf-8')
-  .trim()
-  .split(/\r?\n/);
+let commandList = readByLines(new URL('./input', import.meta.url));
 
 const FORWARD = 'forward';
 const DOWN = 'down';

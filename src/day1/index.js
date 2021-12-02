@@ -1,13 +1,10 @@
-const fs = require('fs');
+import { readByLines, sumNumbers } from '../utils.js';
 
 // Part 1
-let measurements = fs
-  .readFileSync(__dirname + '/input', 'utf-8')
-  .trim()
-  .split(/\r?\n/)
-  .map(Number);
+let measurements = readByLines(new URL('./input', import.meta.url)).map(Number);
 
 console.log(
+  'Part 1:',
   measurements.reduce(
     (tot, cur, i, arr) => (cur > arr[i - 1] ? tot + 1 : tot),
     0,
@@ -15,8 +12,6 @@ console.log(
 );
 
 // Part 2
-const sumNumbers = (a, b) => a + b;
-
 let increasedTotal = 0;
 
 for (let index = 0; index < measurements.length - 2; index++) {
@@ -30,4 +25,4 @@ for (let index = 0; index < measurements.length - 2; index++) {
   }
 }
 
-console.log(increasedTotal);
+console.log('Part 2:', increasedTotal);
